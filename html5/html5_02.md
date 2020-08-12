@@ -69,3 +69,44 @@ progress 요소 표현 : <progress value="25" max="100"></progress>
 
 ## 시멘틱 블록 요소 
 블록 요소 : 문서 구조적 요소로 블록 단위로 적용되는 요소 (새로운 행에 표현)
+
+- main 요소
+<br> 주요 콘텐츠 블록을 지정할 때 사용
+<br> 문서에서 유일한 부분이므로 반복적으로 사용되는 컨텐츠는 포함할 수 없음
+<br> 전체적인 아웃라인에는 아무런 영향을 주지 않는다.
+```html
+<body>
+    <main> 
+    <h3>블록 요소</h3>
+        <p>main 요소</p>
+        <article>
+            <p>main은 article, aside, footer, header, nav 하위 요소로 사용할 수 없다.</p>
+        </article>
+    </main>
+</body>
+```
+
+- figure 요소, figcaption 요소
+    - figure 요소 : 본문에 삽입된 그림, 다이어그램, 사진, 소스코드, 동영상 등과 같은 독립적 콘텐츠를 블록화 할때 사용
+    - figcaption 요소 : figure 요소에 대한 캡션(제목)을 표시하는 것, figure 요소 바로 다음이나 맨 마지막에 작성
+    
+```html
+<figure>
+    <img src="test.jpg" width="200" height="100">
+    <figcaption>figure test</figcaption>
+</figure>
+```
+
+- details 요소, summary 요소
+    - details 요소 : 사용자가 핸들을 클릭해서 세부정보를 보게 만들 수 있음
+    - summary 요소 : details 하위 요소로 핸들에 표시되는 제목
+```html
+<details>
+    <summary>summary 태그 </summary>
+    <p> 디테일 밑에 내용 작성</p>
+</details>
+<details open> <!--open 속성을 사용하면 세부정보가 처음부터 보여진다-->
+    <summary>summary 태그 </summary>
+    <p> 디테일 밑에 내용 작성</p>
+</details>
+```
