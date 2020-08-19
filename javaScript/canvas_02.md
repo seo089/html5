@@ -91,3 +91,56 @@ true : 반시계방향, false : 시계방향
 */
 </script>
 ```
+
+4-2. 직선과 접하는 원호 그리기
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+context.moveTo(30,30);
+context.arcTo(100,170,180,80,50);
+/*arcTo 메서드로 보조점(x1,y1), 종료점(x2,y2) 점을 찍고 접점에 원호를 그린다.*/
+context.stroke();
+context.fill();/*원호 내부 채우기*/
+</script>
+```
+
+> ### 5. 베지에 곡선 그리기
+베지에 곡선(Bezier Curve)은 n개의 점으로부터 얻어지는 n-1차 곡선을 의미한다.
+- 2차 베지에 곡선 quadraticCurveTo()
+<br> 2차 베지에 곡선을 그리기 위해 3개의 점이 필요한데
+<br> moveTo()로 한 개의 점을 찍고 quadraticCurveTo()으로 두 개의 점을 찍는다.
+- 3차 베지에 곡선 : bezierCurveTo()
+
+5-1. 2차 베지에곡선의 순환 알고리즘
+```
+2차베지에곡선(A,B,C){
+// A: 시작점, B: 제어점, C: 종료점
+D <- 선분 AB의 중점;
+E <- 선분 BC의 중점;
+F <- 선분 DE의 중점;
+F는 베지에 곡선상의 한 점이 됨;
+2차베지에곡선(A,D,F);
+2차베지에곡선(F,E,C);
+}
+```
+
+5-2. 2차 베지에 곡선 그리기
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+context.moveTo(50,150);
+context.quadraticCurveTo(130,50,180,180);
+context.stroke();
+</script>
+```
+
+5-3. 3차 베지에 곡선 그리기
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+context.moveTo(30,50);
+context.bezierCurveTo(50,180,130,180,180,50);
+/*bezierCurveTo() 로 3개 점의 좌표를 찍는다.*/
+context.stroke();
+</script>
+```
