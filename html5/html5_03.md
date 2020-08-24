@@ -44,14 +44,14 @@
 ### form 요소
 
 |속성|설명|
-|:---:|:---|
+|:---:|---|
 |autocomplete="on or off"|자동완성 기능의 사용 여부를 지정|
 |novalidate|submit 할 때 form 데이터의 유효성을 검사하지 않도록 지정|
 |enctype="인코딩"|method="post" 경우 submit 할 때 form 데이터의 인코딩 방식 지정|
 
 ### HTML5에 추가된 type 속성값의 종류
 |속성값|설명|
-|:---:|:---|
+|:---:|---|
 |search|검색어 입력 <input type="search" ...>|
 |tel|전화번호 입력 <input type="tel" ...>|
 |url|url 입력 **자동으로 유효성 검사** <input type="url" ...>|
