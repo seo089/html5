@@ -13,7 +13,7 @@
 
 ### canvas와 context 객체
 - canvas 요소
-<br> 캔버스 영역은 웹페이제엇 그림이 그려지는 사각형 영역으로 `canvas`요소를 사용한다.
+<br> 캔버스 영역은 웹페이지에서 그림이 그려지는 사각형 영역으로 `canvas`요소를 사용한다.
 ```html
 <canvas id="캔버스 객체 아이디" width="폭" height="높이">
     <!--defalut 는 width 300px height 150px 이다.-->

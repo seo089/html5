@@ -35,3 +35,68 @@ context.stroke();
 - fillStyle : 도형을 채우는 색상을 지정
 - globalAlpha : 색상의 투명도를 지정, 값 : 0.0(완전 투명) ~ 1.0(완전 불투명)
 
+### 2-2. 그라데이션 스타일
+
+|메서드|설명|
+|:---:|:---:|
+|context.createLinearGradient(x1,y1,x2,y2)|선형 그라데이션 지정|
+|context.createRadialGradient(x1,y1,r1,x2,y2,r2)|방사형 그라데이션 지정|
+|context.addColorStop(오프셋, 색상)|그라데이션 경계색 지정|
+
+### 2-3. 선형 그라데이션 예제
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+let gradient = context.createLinearGradient(0,0,150,150);
+gradient.addColorStop(0,"red");
+gradient.addColorStop(0.5,"yellow");
+gradient.addColorStop(1,"green");
+context.fillStyle = gradient;
+context.fillRect(0,0,150,150);
+</script>
+```
+
+### 2-4. 방사형 그라데이션 예제
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+let gradient = context.createRadialGradient(150,150,30,150,150,130);
+gradient.addColorStop(0,"red");
+gradient.addColorStop(0.5,"yellow");
+gradient.addColorStop(1,"green");
+context.fillStyle = gradient;
+context.fillRect(0,0,canvas.width, canvas.height);
+</script>
+```
+
+> ## 3. 패턴 스타일
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+let img = new Image();
+img.src = "image.jpg";
+img.onload = function() { // 이미지가 로드 완료되면 function 진행
+    context.beginPath();
+    let pattern = context.createPattern(img,"repeat");
+    // 이미지 로드가 완료되면 메서드를 사용해서 이미지 패턴 객체를 생성
+    context.fillStyle = pattern;
+    // fillStyle 속성을 이미지 패턴 객체로 지정
+    context.arc(100,100,70,0,2*Math.PI,false);
+    context.fill();
+    context.strokeStyle = pattern;
+    context.lineWidth = 15;
+    context.strokeRect(10,10,180,180);
+}
+</script>
+```
+
+> ## 4. 그림자 스타일 
+
+### 4-1.그림자 스타일 관련 속성
+
+|속성|설명|
+|:---:|:---|
+|context.shadowColor|그림자의 색상을 지정(기본값은 완전 투명한 검은색 rgba(0,0,0,0))|
+|context.shadowOffsetX|대상을 기준으로 그림자의 수평(x좌표) 오프셋을 지정(기본값 0)|
+|context.shadowOffsetY|대상을 기준으로 그림자의 수직(y좌표) 오프셋을 지정(기본값 0)|
+
