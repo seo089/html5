@@ -99,4 +99,57 @@ img.onload = function() { // 이미지가 로드 완료되면 function 진행
 |context.shadowColor|그림자의 색상을 지정(기본값은 완전 투명한 검은색 rgba(0,0,0,0))|
 |context.shadowOffsetX|대상을 기준으로 그림자의 수평(x좌표) 오프셋을 지정(기본값 0)|
 |context.shadowOffsetY|대상을 기준으로 그림자의 수직(y좌표) 오프셋을 지정(기본값 0)|
+|context.shadowBlur|그림자의 흐림 정도를 지정(기본값 0)|
 
+### 4-2. 그림자 스타일 예제
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+context.fillStyle = 'rgba(255,0,0,1)';
+context.shadowOffsetX = -5;
+context.shadowOffsetY = -10;
+context.shadowColor = 'black';
+context.shadowBlur = 5;
+context.fillRect(50,50,100,250);
+
+context.shadowOffsetX = 10;
+context.shadowOffsetY = 20;
+context.shadowColor = 'black';
+context.shadowBlur = 10;
+context.fillRect(250,50,100,250);
+</script>
+```
+
+> ## 5. 도형 합성
+
+### 5-1. 도형 합성
+```html
+<script>
+let context = document.getElementById("myCanvas").getContext("2d");
+context.beginPath();
+context.fillStyle = 'green';
+context.arc(75,100,60,0,2*Math.PI, true);
+context.fill();
+//먼저 그려진 도형을 대상 (destination) 이라 함
+context.globalCompositeOperation = "속성값";
+context.beginPath();
+context.fillStyle = 'yellow';
+context.arc(125,100,60,0,2*Math.PI,true);
+context.fill();
+//나중에 그려진 도형을 소스 (source) 라 함
+</script>
+```
+### 5-2. globalCompositeOperation 의 속성 값
+|속성값|설명|
+|:---:|---|
+|source-atop|대상 위에 소스 도형이 표시되지만 대상과 겹치지 않는 소스 부분은 표시 되지 않음|
+|source-in|대상 안에 있는 소스 부분만 표시|
+|source-out|대상 밖에 있는 소스 부분만 표시|
+|source-over|기본값, 대상 위에 소스 도형을 표시|
+|destination-atop|소스 위에 대상 도형이 표시되지만 소스와 겹치지 않는 대상 부분은 표시되지 않음|
+|destination-in|소스 안에 있는 대상 부분만 표시|
+|destination-out|소스 밖에 있는 대상 부분만 표시|
+|destination-over|소스 위에 대상 도형을 표시|
+|lighter|겹쳐진 부분은 두 색의 합을 구해서 표시|
+|copy|대상은 무시, 소스만 표시|
+|xor|대상과 소스의 겹쳐진 부분은 투명하게 표시|
